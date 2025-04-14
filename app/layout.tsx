@@ -37,7 +37,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={anonymousPro.className}>
+      <body className={anonymousPro.className + " overflow-hidden"}>
         <main>{children}</main>
       </body>
     </html>

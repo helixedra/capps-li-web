@@ -7,7 +7,7 @@ export default function Home() {
   return (
     <>
       <div
-        className="flex px-12 py-24 flex-col h-screen justify-center"
+        className="flex px-12 py-24 h-[calc(100vh-8rem)] md:h-screen md:py-24 flex-col justify-center overflow-hidden snap-y"
         style={{
           animation: "fadeIn 1s ease-in-out forwards",
           animationDelay: "1s",
