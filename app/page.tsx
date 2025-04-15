@@ -2,8 +2,26 @@
 import { TypeAnimation } from "react-type-animation";
 import styles from "./cursor.module.css";
 import Random3DScene from "./Random3DScene";
+import { GoogleAnalytics } from "@next/third-parties/google";
+import CookieConsent from "./CookieConsent";
+import { useEffect, useState } from "react";
 
 export default function Home() {
+  const [hasConsent, setHasConsent] = useState(false);
+
+  useEffect(() => {
+    if (typeof window !== "undefined") {
+      const consent = localStorage.getItem("cookie_consent");
+      setHasConsent(consent === "true");
+      // Listen for consent changes from CookieConsent
+      const handler = () => {
+        const updatedConsent = localStorage.getItem("cookie_consent");
+        setHasConsent(updatedConsent === "true");
+      };
+      window.addEventListener("storage", handler);
+      return () => window.removeEventListener("storage", handler);
+    }
+  }, []);
   return (
     <>
       <div
@@ -60,6 +78,8 @@ export default function Home() {
         </div>
         <Random3DScene />
       </div>
+      <CookieConsent />
+      {hasConsent && <GoogleAnalytics gaId="G-K3S605JHCR" />}
     </>
   );
 }

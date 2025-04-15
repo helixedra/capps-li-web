@@ -1,7 +1,6 @@
 import type { Metadata } from "next";
 import "./globals.css";
 import { Anonymous_Pro } from "next/font/google";
-import { GoogleAnalytics } from "@next/third-parties/google";
 
 const anonymousPro = Anonymous_Pro({
   weight: ["400", "700"],
@@ -41,7 +40,6 @@ export default function RootLayout({
       <body className={anonymousPro.className + " overflow-hidden"}>
         <main>{children}</main>
       </body>
-      <GoogleAnalytics gaId="G-K3S605JHCR" />
     </html>
   );
 }
