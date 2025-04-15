@@ -2,7 +2,7 @@
 import { TypeAnimation } from "react-type-animation";
 import styles from "./cursor.module.css";
 import Random3DScene from "./Random3DScene";
-import { GoogleAnalytics } from "@next/third-parties/google";
+import { GoogleAnalytics, GoogleTagManager } from "@next/third-parties/google";
 import CookieConsent from "./CookieConsent";
 import { useEffect, useState } from "react";
 
@@ -79,7 +79,12 @@ export default function Home() {
         <Random3DScene />
       </div>
       <CookieConsent />
-      {hasConsent && <GoogleAnalytics gaId="G-K3S605JHCR" />}
+      {hasConsent && (
+        <>
+          <GoogleAnalytics gaId="G-K3S605JHCR" />
+          <GoogleTagManager gtmId="G-K3S605JHCR" />
+        </>
+      )}
     </>
   );
 }
